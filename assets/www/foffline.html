@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog</title>
+<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="fcoin_style.css" rel="stylesheet" type="text/css">
+
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+		document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+	
+	function onBackKeyDown() {
+	
+			navigator.app.backHistory();
+}
+
+	
+	
+	
+	</script>
+
+</head>
+
+<body>
+<div data-role="page" id="page">
+  <div data-role="header">
+    <h1>FCOIN</h1>
+  </div>
+  <div data-role="content">
+    <p><span style="font-size: 180%;">OFFLINE<br>
+      {
+      kein Internet }<br />
+    </span></p>
+    <p>Sie haben keine stabile Verbindung zum Internet. <br>
+      Bitte prüfen Sie ihre Datenverbindung und starten Sie fcoin neu.<br>
+    </p>
+    <p>Achtung, wenn du keine Datenflatrate hast können Kosten entstehen...<br>
+      <br>
+    </p>
+  <a data-ajax="false" href="#" title="Spiel beenden" style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; font-size:100%;  width: 90%;" onclick="javascript:navigator.app.exitApp();" data-role="button">Fcoin beenden</a>  </div>
+</div>
+</body>
+</html>
