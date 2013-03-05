@@ -27,7 +27,7 @@
 
         <access origin="https://fcoin.de" subdomains="true" />
         <access origin="http://fcoin.de" subdomains="true" />
-        <access origin="https://plus.google.com/" onlyInBrowser="true" />
+        <access origin="https://plus.google.com/102390642796132093917" onlyInBrowser="true" />
     <!-- <access origin=".*"/> Allow all domains, suggested development use only -->
 
     <log level="DEBUG"/>

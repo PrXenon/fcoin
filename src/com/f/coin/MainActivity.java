@@ -26,6 +26,8 @@ import android.webkit.WebSettings;
 
 import org.apache.cordova.*;
 
+
+
 import com.f.coin.R;
 
 
@@ -34,15 +36,15 @@ import com.f.coin.R;
 
 public class MainActivity extends DroidGap {
 	private static final int MENU_ITEM_EINSTELLUNGEN = Menu.FIRST;
-	private static final int MENU_ITEM_ANLEITUNG = MENU_ITEM_EINSTELLUNGEN +1;
-	private static final int MENU_ITEM_CHANGELOG = MENU_ITEM_ANLEITUNG +1;
-	private static final int MENU_ITEM_IMPRESS = MENU_ITEM_CHANGELOG +1;
-	private static final int MENU_ITEM_GOOGLE = MENU_ITEM_IMPRESS +1;
+	//private static final int MENU_ITEM_IMPRESS = MENU_ITEM_EINSTELLUNGEN +1;
+	
+	private static final int MENU_ITEM_GOOGLE = MENU_ITEM_EINSTELLUNGEN +1;
 	private static final int MENU_ITEM_CACHE = MENU_ITEM_GOOGLE +1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
  
+    	
         super.onCreate(savedInstanceState);
         boolean firstrun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("firstrun", true);
         if (firstrun){
@@ -139,13 +141,13 @@ public class MainActivity extends DroidGap {
     	nointernet();
 	}
     
-    
+   
+   
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Profil");
-		menu.add(0, MENU_ITEM_ANLEITUNG, 0, "Hilfe");
-		menu.add(0, MENU_ITEM_CHANGELOG, 0, "Changelog");
-		menu.add(0, MENU_ITEM_IMPRESS, 0, "Impressum");
+		menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
+		
+		//menu.add(0, MENU_ITEM_IMPRESS, 0, "Impressum");
 		menu.add(0, MENU_ITEM_GOOGLE, 0, "FCOIN bei G+");
 		menu.add(0, MENU_ITEM_CACHE, 0, "! Cache zurücksetzen !");
 		return super.onCreateOptionsMenu(menu);
@@ -155,34 +157,19 @@ public class MainActivity extends DroidGap {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case MENU_ITEM_EINSTELLUNGEN:
-			AlertDialog.Builder builder2 = new AlertDialog.Builder(this);  
-	        builder2.setMessage("Einstellungen noch nicht verfügbar!")
-	        .setTitle("Hinweis")
-	        .setPositiveButton("OK", null);
-	        builder2.show();
+			//AlertDialog.Builder builder2 = new AlertDialog.Builder(this);  
+	        //builder2.setMessage("Einstellungen noch nicht verfügbar!")
+	        //.setTitle("Hinweis")
+	        //.setPositiveButton("OK", null);
+	        //builder2.show();
+			//break;
+			Intent mainIntent = new Intent(MainActivity.this, Einstellungen.class);
+            MainActivity.this.startActivity(mainIntent);
 			break;
-		case MENU_ITEM_ANLEITUNG:
-			//super.loadUrl("file:///android_asset/www/anleitung.php", 1000);
-			AlertDialog.Builder builder3 = new AlertDialog.Builder(this);  
-	        builder3.setMessage("Hilfe ist noch nicht fertig.")
-	        .setTitle("Hilfe")
-	        .setPositiveButton("OK", null);
-	        builder3.show();
-			break;
-		case MENU_ITEM_CHANGELOG:
-			//super.loadUrl("file:///android_asset/www/changelog.php", 1000);
-			AlertDialog.Builder builder4 = new AlertDialog.Builder(this);  
-	        builder4.setMessage("Die Fcoin App befindet sich noch in der BETA Phase")
-	        .setTitle("Hinweis")
-	        .setPositiveButton("OK", null);
-	        builder4.show();
-	        super.loadUrl("file:///android_asset/www/changelog.html");
-			break;
-		case MENU_ITEM_IMPRESS:
-			super.loadUrl("https://fcoin.de/kontakt.php");
-			break;
-		case MENU_ITEM_GOOGLE:
-			
+		//case MENU_ITEM_IMPRESS:
+			//super.loadUrl("https://fcoin.de/kontakt.php");
+			//break;
+		case MENU_ITEM_GOOGLE:		
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/102390642796132093917"));
 		     startActivity(Intent.createChooser(intent, "Öffnen mit ?"));
 			break;
@@ -232,10 +219,11 @@ public class MainActivity extends DroidGap {
         
     }
     
-    
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             //do your stuff and Return true to prevent this event from being propagated further
+        	Log.i("HA", "Finishing");
         	finish();
             return true;
         }
@@ -243,6 +231,7 @@ public class MainActivity extends DroidGap {
         return false;
         
     }
+    
 }
     
    
