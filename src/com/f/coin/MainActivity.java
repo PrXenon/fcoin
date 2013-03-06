@@ -5,6 +5,7 @@ import java.io.File;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -36,10 +37,11 @@ import com.f.coin.R;
 
 public class MainActivity extends DroidGap {
 	private static final int MENU_ITEM_EINSTELLUNGEN = Menu.FIRST;
-	//private static final int MENU_ITEM_IMPRESS = MENU_ITEM_EINSTELLUNGEN +1;
 	
 	private static final int MENU_ITEM_GOOGLE = MENU_ITEM_EINSTELLUNGEN +1;
-	private static final int MENU_ITEM_CACHE = MENU_ITEM_GOOGLE +1;
+	private static final int MENU_ITEM_UPDATE = MENU_ITEM_GOOGLE +1;
+	
+	private static final int MENU_ITEM_CACHE = MENU_ITEM_UPDATE +1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,11 +147,16 @@ public class MainActivity extends DroidGap {
    
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
-		
-		//menu.add(0, MENU_ITEM_IMPRESS, 0, "Impressum");
+    	
+    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) { 
+    		menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
+    		
+    		
+        }
+    	menu.add(0, MENU_ITEM_UPDATE, 0, "auf Update prüfen");
 		menu.add(0, MENU_ITEM_GOOGLE, 0, "FCOIN bei G+");
 		menu.add(0, MENU_ITEM_CACHE, 0, "! Cache zurücksetzen !");
+		
 		return super.onCreateOptionsMenu(menu);
 	}
     
@@ -166,9 +173,10 @@ public class MainActivity extends DroidGap {
 			Intent mainIntent = new Intent(MainActivity.this, Einstellungen.class);
             MainActivity.this.startActivity(mainIntent);
 			break;
-		//case MENU_ITEM_IMPRESS:
-			//super.loadUrl("https://fcoin.de/kontakt.php");
-			//break;
+		case MENU_ITEM_UPDATE:
+			Intent upd = new Intent(MainActivity.this, Update.class);
+            MainActivity.this.startActivity(upd);
+			break;
 		case MENU_ITEM_GOOGLE:		
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/102390642796132093917"));
 		     startActivity(Intent.createChooser(intent, "Öffnen mit ?"));
