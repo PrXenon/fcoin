@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -24,6 +25,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.webkit.WebSettings;
+import android.widget.Toast;
 
 import org.apache.cordova.*;
 
@@ -37,11 +39,13 @@ import com.f.coin.R;
 
 public class MainActivity extends DroidGap {
 	private static final int MENU_ITEM_EINSTELLUNGEN = Menu.FIRST;
-	
-	private static final int MENU_ITEM_GOOGLE = MENU_ITEM_EINSTELLUNGEN +1;
+	private static final int MENU_ITEM_MARKT = MENU_ITEM_EINSTELLUNGEN +1;
+	private static final int MENU_ITEM_MARKTFROYO = MENU_ITEM_MARKT +1;
+	private static final int MENU_ITEM_GOOGLE = MENU_ITEM_MARKTFROYO +1;
 	private static final int MENU_ITEM_UPDATE = MENU_ITEM_GOOGLE +1;
 	
 	private static final int MENU_ITEM_CACHE = MENU_ITEM_UPDATE +1;
+	private static final int MENU_ITEM_EXIT = MENU_ITEM_CACHE +1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,8 @@ public class MainActivity extends DroidGap {
         }
     }
     
+    
+    
     @Override
     public void removeSplashScreen() {
       if (splashDialog != null && splashDialog.isShowing()) {
@@ -112,7 +118,7 @@ public class MainActivity extends DroidGap {
        
     
     private void nointernet(){
-    	super.loadUrl("file:///android_asset/www/foffline.html", 500);
+    	super.loadUrl("file:///android_asset/www/foffline.html");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);  
         builder.setMessage("Ihre Internetverbindung ist nicht stabil. Bitte überprüfen Sie ihre Einstellungen.")  
         .setTitle("Internet Fehler.")   
@@ -147,15 +153,27 @@ public class MainActivity extends DroidGap {
    
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-    	
-    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) { 
-    		menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
+    	menu.add(0, MENU_ITEM_MARKT, 0, "Marktplatz");
+    
+		
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) { 
+			
+	    	menu.add(0, MENU_ITEM_GOOGLE, 0, "FCOIN bei G+");
+	    	menu.add(0, MENU_ITEM_UPDATE, 0, "auf Update prüfen");
+	    	menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
     		
     		
         }
-    	menu.add(0, MENU_ITEM_UPDATE, 0, "auf Update prüfen");
-		menu.add(0, MENU_ITEM_GOOGLE, 0, "FCOIN bei G+");
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) { 
+			
+	    	menu.add(0, MENU_ITEM_GOOGLE, 0, "FCOIN bei G+");
+	    	menu.add(0, MENU_ITEM_UPDATE, 0, "auf Update prüfen");
+	    	//menu.add(0, MENU_ITEM_EINSTELLUNGEN, 0, "Einstellungen");
+    		
+    		
+        }
 		menu.add(0, MENU_ITEM_CACHE, 0, "! Cache zurücksetzen !");
+		menu.add(0, MENU_ITEM_EXIT, 0, "fcoin schließen");
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -177,6 +195,18 @@ public class MainActivity extends DroidGap {
 			Intent upd = new Intent(MainActivity.this, Update.class);
             MainActivity.this.startActivity(upd);
 			break;
+		case MENU_ITEM_MARKT:
+			Toast.makeText(this, "fcoin Marktplatz | {BETA}-Phase...", Toast.LENGTH_LONG).show();
+	        
+			Intent markt = new Intent(MainActivity.this, Marktplatz.class);
+            MainActivity.this.startActivity(markt);
+			break;
+		case MENU_ITEM_MARKTFROYO:
+			Toast.makeText(this, "fcoin Marktplatz | {BETA}-Phase...", Toast.LENGTH_LONG).show();
+	        
+			Intent marktfroyo = new Intent(MainActivity.this, Marktplatzfroyo.class);
+            MainActivity.this.startActivity(marktfroyo);
+			break;
 		case MENU_ITEM_GOOGLE:		
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/102390642796132093917"));
 		     startActivity(Intent.createChooser(intent, "Öffnen mit ?"));
@@ -191,7 +221,9 @@ public class MainActivity extends DroidGap {
 	        super.loadUrl("https://fcoin.de");
 	        clearApplicationData();
 			break;
-		
+		case MENU_ITEM_EXIT:
+			finish();
+			break;
 		}
 		
 		return super.onOptionsItemSelected(item);
@@ -227,19 +259,38 @@ public class MainActivity extends DroidGap {
         
     }
     
+    /**
+     * Exit the app if user select yes.
+     */
+    private void doExit() {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                MainActivity.this);
+
+        alertDialog.setPositiveButton("Ja", new OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+            	onDestroy();
+                finish();
+            }
+        });
+
+        alertDialog.setNegativeButton("Nein", null);
+
+        alertDialog.setMessage("Möchten Sie fcoin wirklich beenden?");
+        alertDialog.setTitle("fcoin | Hinweis");
+        alertDialog.show();
+    }
+    
+    
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //do your stuff and Return true to prevent this event from being propagated further
-        	Log.i("HA", "Finishing");
-        	finish();
-            return true;
+
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            doExit();
         }
 
-        return false;
-        
+        return super.onKeyDown(keyCode, event);
     }
     
 }
-    
-   

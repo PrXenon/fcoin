@@ -2,10 +2,18 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.phonegap.example"
-    version   = "1.0.0">
+    version   = "1.5.6">
 
-<name>PhoneGap Build Application</name>
+<name>fcoin</name>
 
+
+<!-- <access origin="http://127.0.0.1*"/>  --> 
+    <!-- allow local pages -->
+    <access origin="https://fcoin.de" subdomains="true" />
+    <access origin="http://fcoin.de" subdomains="true"/>
+    <access origin="http://www.prxenon.com" subdomains="false"/>
+    <access uri="http://google.com" subdomains="false" />
+    
 <description>
 A simple PhoneGap Build application.
 </description>

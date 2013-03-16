@@ -1,6 +1,5 @@
 package com.f.coin;
 
-import com.f.coin.R;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -203,8 +202,10 @@ public class Einstellungen extends FragmentActivity implements
 		 * fragment.
 		 */
 		public static final String ARG_SECTION_NUMBER = "section_number";
-		String changelog = "<p><b>Version 1.5.5 - 06.03.2013<br><br></b>&raquo; add Teil-Support Android 2.3.3 (API 10) Einstellungs Menu fehlt ! <br></p><p><b>Version 1.5 - 04.03.2013<br><br></b>&raquo; add Einstellungen in Options menu<br>&raquo; removed old changelog page<br>&raquo; add appinfo &amp; impressum page<br>&raquo; add check new version</p><hr width=\"90%\" size=\"1\"><p><strong>Version 1.3.6 - 19.02.2013</strong></strong><br><br>&raquo; Add CacheClean in option menu<br>&raquo; some code stuff </p><hr width=\"90%\" size=\"1\"><p><strong>Version 1.3.1 - 18.02.2013</strong><br><br>&raquo; Splashscreen modifications<br>&raquo; unused code clean<br>&raquo; new ChangLog theme<br>&raquo; new offline page theme</p><hr width=\"90%\" size=\"1\"></p>";
-		String appinfo = "<br><br><b>App Version:<b> 1.5.0";
+		String changelogp2 = "<p><b>Version 1.6.9 - 16.03.2013<br><br></b>&raquo; Bugfixes<br></p><p><b>Version 1.6.2 - 16.03.2013<br><br></b>&raquo; Bugfixes<br>&raquo; add Support Android 2.2.x (FROYO)<br>&raquo; changed BackKeyEvent<br></p><p><b>Version 1.6.1 - 15.03.2013<br><br></b>&raquo; add Marktplatz<br>&raquo; changed backbuttom event<br>&raquo; add fcoin API v0.1<br></p>";
+		
+		String changelog = "<p><b>Version 1.5.81 - 11.03.2013<br><br></b>&raquo; fixed externe Links<br></p><p><b>Version 1.5.5 - 06.03.2013<br><br></b>&raquo; add Teil-Support Android 2.3.3 (API 10) Einstellungs Menu fehlt ! <br></p><p><b>Version 1.5 - 04.03.2013<br><br></b>&raquo; add Einstellungen in Options menu<br>&raquo; removed old changelog page<br>&raquo; add appinfo &amp; impressum page<br>&raquo; add check new version</p><hr width=\"90%\" size=\"1\"><p><strong>Version 1.3.6 - 19.02.2013</strong></strong><br><br>&raquo; Add CacheClean in option menu<br>&raquo; some code stuff </p><hr width=\"90%\" size=\"1\"><p><strong>Version 1.3.1 - 18.02.2013</strong><br><br>&raquo; Splashscreen modifications<br>&raquo; unused code clean<br>&raquo; new ChangLog theme<br>&raquo; new offline page theme</p><hr width=\"90%\" size=\"1\"></p>";
+		String appinfo = "<br><br><b>App Version:<b> 1.6.9";
 		String fcoininfo ="<b>www.fcoin.de</b>";
 		
 
@@ -223,7 +224,7 @@ public class Einstellungen extends FragmentActivity implements
 				
 				//textView.setGravity(Gravity.CENTER);
 				//textView.setBackgroundResource(R.drawable.bg);
-				textView.setText(Html.fromHtml(changelog));
+				textView.setText(Html.fromHtml(changelogp2+changelog));
 				
 				//textView.setText("Unendlich gut, hier kommt dann der Liedtext hin...");
 				return textView;

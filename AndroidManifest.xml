@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.f.coin"
-    android:versionCode="011"
-    android:versionName="1.5.5" >
+    android:versionCode="016"
+    android:versionName="1.6.9" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
     <supports-screens
@@ -41,6 +41,15 @@
         <activity
             android:name="com.f.coin.Update"
             android:label="@string/title_activity_update" >
+        </activity>
+        <activity
+            android:name="com.f.coin.Marktplatz"
+            android:label="@string/title_activity_marktplatz" >
+        </activity>
+        <activity
+            android:name="com.f.coin.Marktplatzfroyo"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+            android:label="@string/title_activity_marktplatzfroyo" >
         </activity>
     </application>
 

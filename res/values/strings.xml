@@ -10,6 +10,9 @@
     <string name="title_section3">Impressum</string>
     <string name="title_section2">Dokumentation</string>
     <string name="title_section1">Changelog</string>
+
+    <color name="black">#000000</color>
+
     <string name="title_activity_einstellungen">FCOIN | Einstellungen</string>
     <string name="update">
 <![CDATA[
@@ -27,5 +30,7 @@ www.fcoin.de<br>
     <string name="title_activity_update">Update</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_marktplatz">Marktplatz</string>
+    <string name="title_activity_marktplatzfroyo">Marktplatzfroyo</string>
 
 </resources>
