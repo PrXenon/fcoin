@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.f.coin"
-    android:versionCode="016"
-    android:versionName="1.6.9" >
+    android:versionCode="025"
+    android:versionName="1.8.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -27,11 +27,6 @@
             android:name="com.f.coin.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
             android:label="@string/title_activity_main" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.f.coin.Einstellungen"
@@ -47,9 +42,23 @@
             android:label="@string/title_activity_marktplatz" >
         </activity>
         <activity
-            android:name="com.f.coin.Marktplatzfroyo"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
-            android:label="@string/title_activity_marktplatzfroyo" >
+            android:name="com.f.coin.Start"
+            android:label="@string/title_activity_start" >
+        </activity>
+        <activity
+            android:name="com.f.coin.SplashScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.f.coin.Offline"
+            android:label="@string/title_activity_offline" >
         </activity>
     </application>
 

@@ -10,6 +10,7 @@
     <string name="title_section3">Impressum</string>
     <string name="title_section2">Dokumentation</string>
     <string name="title_section1">Changelog</string>
+    <string name="offlinetitel">OFFLINE | kein Internet</string>
 
     <color name="black">#000000</color>
 
@@ -24,6 +25,12 @@ www.fcoin.de<br>
 <p><strong>App Entwicklung</strong><br>
   PrXenon
 </p>
+<p><strong>Marktplatzfragen an:</strong><br>
+  fcoin.marktplatz@gmail.com
+</p>
+<p><strong>Licence</strong><br>
+  GPLv3 | Quellcode unter https://github.com/PrXenon/fcoin
+</p>
 </p>
 ]]>
     </string>
@@ -32,5 +39,8 @@ www.fcoin.de<br>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_marktplatz">Marktplatz</string>
     <string name="title_activity_marktplatzfroyo">Marktplatzfroyo</string>
+    <string name="title_activity_start">Fcoin</string>
+    <string name="title_activity_splash_screen">Fcoin</string>
+    <string name="title_activity_offline">Offline</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -34,11 +35,9 @@ public class Marktplatz extends Activity {
 	           
 			@Override
             public void onReceivedError(WebView view, int errorCode, String      description, String failingUrl){
-				
-				WebView webView = (WebView) findViewById(R.id.markt1);
-		        webView.getSettings().setJavaScriptEnabled(true);
-		        
-		        webView.loadUrl("file:///android_asset/www/foffline.html");
+				Intent offline= new Intent(Marktplatz.this, Offline.class);
+                Marktplatz.this.startActivity(offline);
+                Marktplatz.this.finish();
 		        }
 
 			// Override page so it's load on my view only
